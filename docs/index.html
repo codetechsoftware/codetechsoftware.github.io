@@ -1,123 +1,78 @@
+The Leap day theme
+Build Status Gem Version
+
+Leap day is a Jekyll theme for GitHub Pages. You can preview the theme to see what it looks like, or even use it today.
+
+Thumbnail of Leap day
+
+Usage
+To use the Leap day theme:
+
+Add the following to your site's _config.yml:
+
+theme: jekyll-theme-leap-day
+Optionally, if you'd like to preview your site on your computer, add the following to your site's Gemfile:
+
+gem "github-pages", group: :jekyll_plugins
+Customizing
+Configuration variables
+Leap day will respect the following variables, if set in your site's _config.yml:
+
+title: [The title of your site]
+description: [A short description of your site's purpose]
+Additionally, you may choose to set the following optional variables:
+
+show_downloads: ["true" or "false" to indicate whether to provide a download URL]
+google_analytics: [Your Google Analytics tracking ID]
+Stylesheet
+If you'd like to add your own custom styles:
+
+Create a file called /assets/css/style.scss in your site
+Add the following content to the top of the file, exactly as shown:
 ---
-layout: default
 ---
 
-Text can be **bold**, _italic_, or ~~strikethrough~~.
+@import "{{ site.theme }}";
+Add any custom CSS (or Sass, including imports) you'd like immediately after the @import line
+Note: If you'd like to change the theme's Sass variables, you must set new values before the @import line in your stylesheet.
 
-[Link to another page](./another-page.html).
+Layouts
+If you'd like to change the theme's HTML layout:
 
-There should be whitespace between paragraphs.
+Copy the original template from the theme's repository
+(Pro-tip: click "raw" to make copying easier)
+Create a file called /_layouts/default.html in your site
+Paste the default layout content copied in the first step
+Customize the layout as you'd like
+Overriding GitHub-generated URLs
+Templates often rely on URLs supplied by GitHub such as links to your repository or links to download your project. If you'd like to override one or more default URLs:
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
+Look at the template source to determine the name of the variable. It will be in the form of {{ site.github.zip_url }}.
+Specify the URL that you'd like the template to use in your site's _config.yml. For example, if the variable was site.github.url, you'd add the following:
+github:
+  zip_url: http://example.com/download.zip
+  another_url: another value
+When your site is built, Jekyll will use the URL you specified, rather than the default one provided by GitHub.
+Note: You must remove the site. prefix, and each variable name (after the github.) should be indent with two space below github:.
 
-# Header 1
+For more information, see the Jekyll variables documentation.
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
+Roadmap
+See the open issues for a list of proposed features (and known issues).
 
-## Header 2
+Project philosophy
+The Leap day theme is intended to make it quick and easy for GitHub Pages users to create their first (or 100th) website. The theme should meet the vast majority of users' needs out of the box, erring on the side of simplicity rather than flexibility, and provide users the opportunity to opt-in to additional complexity if they have specific needs or wish to further customize their experience (such as adding custom CSS or modifying the default layout). It should also look great, but that goes without saying.
 
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
+Contributing
+Interested in contributing to Leap day? We'd love your help. Leap day is an open source project, built one contribution at a time by users like you. See the CONTRIBUTING file for instructions on how to contribute.
 
-### Header 3
+Previewing the theme locally
+If you'd like to preview the theme locally (for example, in the process of proposing a change):
 
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
-```
-
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
-```
-
-#### Header 4
-
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-
-##### Header 5
-
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
-
-###### Header 6
-
-| head1        | head two          | three |
-|:-------------|:------------------|:------|
-| ok           | good swedish fish | nice  |
-| out of stock | good and plenty   | nice  |
-| ok           | good `oreos`      | hmm   |
-| ok           | good `zoute` drop | yumm  |
-
-### There's a horizontal rule below this.
-
-* * *
-
-### Here is an unordered list:
-
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-
-### And an ordered list:
-
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
-### Small image
-
-![Octocat](https://assets-cdn.github.com/images/icons/emoji/octocat.png)
-
-### Large image
-
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
-
-
-### Definition lists can be used with HTML syntax.
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
-```
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
-```
-The final element.
-```
+Clone down the theme's repository (git clone https://github.com/pages-themes/leap-day)
+cd into the theme's directory
+Run script/bootstrap to install the necessary dependencies
+Run bundle exec jekyll serve to start the preview server
+Visit localhost:4000 in your browser to preview the theme
+Running tests
+The theme contains a minimal test suite, to ensure a site with the theme would build successfully. To run the tests, simply run script/cibuild. You'll need to run script/bootstrap one before the test script will work.
